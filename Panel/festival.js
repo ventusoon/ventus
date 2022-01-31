@@ -54,7 +54,7 @@ function today(day) {
   let daythis = day;
   if (daythis == "0") {
     datenotice();
-    return "🎉";
+    return "🎇";
   } else {
     return daythis;
   }
