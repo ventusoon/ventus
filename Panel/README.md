@@ -53,3 +53,12 @@
    #节假日倒数
    timecard = script-name=timecard,update-interval=3600
    ```
+## 机场信息
+## [Sub-info.js](https://raw.githubusercontent.com/ventusoon/ventus/main/Panel/Sub-info.js)
+   ```bash
+   [Script]
+   Sub_info = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/mieqq/mieqq/master/sub_info_panel.js,script-update-interval=0,argument=url=[URL encode 后的机场节点链接]&reset_day=1&title=AmyInfo&icon=bonjour&color=#007aff
+
+   [Panel]
+   Sub_info = script-name=Sub_info,update-interval=600
+   ```
