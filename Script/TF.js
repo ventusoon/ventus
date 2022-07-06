@@ -15,6 +15,8 @@ TestFlight账户管理脚本
 
 *********************************
 Surge4 添加脚本：
+
+https://raw.githubusercontent.com/ventusoon/ventus/main/Script/TF.js
 *********************************
 
 Surge模块地址：
