@@ -93,7 +93,7 @@
   [MITM]
   hostname = %APPEND% *.tiktokv.com,*.byteoversea.com,*.tik-tokapi.com
   ```
-## [TF修正下载](https://raw.githubusercontent.com/ventusoon/ventus/main/Script/TF.js)
+## [TestFlight账户管理](https://raw.githubusercontent.com/ventusoon/ventus/main/Script/TF.js)
   ```bash
   #!name=TestFlight区域限制解除
   #!desc=该模块适用于更新TestFlight App时, 提示"APP不可用"问题.
@@ -103,7 +103,7 @@
   skip-proxy = %APPEND% iosapps.itunes.apple.com
 
   [Script]
-  TestFlight账户管理 = type=http-request,pattern=^https:\/\/testflight\.apple\.com\/v\d\/(app|account|invite)s\/,requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/TestFlight/TestFlightAccount.js
+  TestFlight账户管理 = type=http-request,pattern=^https:\/\/testflight\.apple\.com\/v\d\/(app|account|invite)s\/,requires-body=1,script-path=https://raw.githubusercontent.com/ventusoon/ventus/main/Script/TF.js
 
   [MITM]
   hostname = %APPEND% testflight.apple.com
