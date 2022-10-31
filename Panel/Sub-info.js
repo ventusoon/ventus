@@ -1,5 +1,5 @@
 /*
-Surge配置参考注释，感谢@asukanana,感谢@congcong.
+Surge配置参考注释,感谢@congcong.
 
 示例↓↓↓ 
 ----------------------------------------
@@ -14,9 +14,11 @@ Sub_info = script-name=Sub_info,update-interval=600
 
 先将带有流量信息的节点订阅链接encode，用encode后的链接替换"url="后面的[机场节点链接]
 
+（实在不会可以用这个捷径生成panel和脚本，https://www.icloud.com/shortcuts/3f24df391d594a73abd04ebdccd92584）
+
 可选参数 &reset_day，后面的数字替换成流量每月重置的日期，如1号就写1，8号就写8。如"&reset_day=8",不加该参数不显示流量重置信息。
 
-可选参数 &expire，机场链接不带expire信息的，可以手动传入expire参数，如"&expire=2022-02-01",注意一定要按照yyyy-MM-dd的格式。
+可选参数 &expire，机场链接不带expire信息的，可以手动传入expire参数，如"&expire=2022-02-01",注意一定要按照yyyy-MM-dd的格式。不希望显示到期信息也可以添加&expire=false取消显示。
 
 可选参数"title=xxx" 可以自定义标题。
 
@@ -38,12 +40,12 @@ let args = getArgs();
   let expire = args.expire || info.expire;
   let content = [`用量：${bytesToSize(used)} | ${bytesToSize(total)}`];
 
-  if (resetDayLeft) {
-    content.push(`重置：剩余${resetDayLeft}天`);
+if (resetDayLeft) {
+    content.push(`\n到期：${resetDayLeft}天 | `);
   }
-  if (expire) {
+  if (expire && expire !== "false") {
     if (/^[\d.]+$/.test(expire)) expire *= 1000;
-    content.push(`到期：${formatTime(expire)}`);
+    content.push(`${formatTime(expire)}`);
   }
 
   let now = new Date();
@@ -54,7 +56,7 @@ let args = getArgs();
 
   $done({
     title: `${args.title} | ${hour}:${minutes}`,
-    content: content.join("\n"),
+    content: content.join(""),
     icon: args.icon || "airplane.circle",
     "icon-color": args.color || "#007aff",
   });
@@ -105,7 +107,7 @@ async function getDataInfo(url) {
 
   return Object.fromEntries(
     data
-      .match(/\w+=[\d.eE+]+/g)
+      .match(/\w+=[\d.eE+-]+/g)
       .map((item) => item.split("="))
       .map(([k, v]) => [k, Number(v)])
   );
